@@ -48,7 +48,7 @@ Four independent checks on enriched fields:
 - Count positivity — all numeric quantities must be > 0
 - UOM enum — container units must match `fields.yaml` allowed values
 - Min ≤ max — weight min must not exceed weight max
-- Hierarchy assertion — item weight < inner weight < master weight
+- Hierarchy assertion — item weight ≤ inner weight ≤ master weight
 
 **4. L2 human review (mandatory)**
 Every record reaches the reviewer regardless of completeness or sanity flag status. The reviewer sees extracted fields, enriched fields, completeness score, and sanity flags as separate signals before approving, rejecting, or overriding individual fields. Nothing is committed without explicit approval.
