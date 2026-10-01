@@ -6,6 +6,8 @@ Persona, input/output contract, architecture, and targeted vs. reached metrics â
 
 ## Persona
 
+When R&D requests a new product code, Sam, a Sales Officer, gets a chat message that the code is ready, but finds the UOM fields empty and has to manually re-key `item_per_inner_qty`, `inner_container_um`, and other packing attributes from R&D's attached spec sheet before he can raise a sales order. With MDMPrefill, those fields arrive pre-filled and R&D-approved, so Sam reviews and confirms the same day instead of waiting on R&D or re-typing by hand.
+
 | Role | Relationship to the system |
 |---|---|
 | **R&D (data steward)** | Owns the field definitions, authors the original spec sheet, and is the **mandatory L2 reviewer**. No record reaches the MDM system without R&D's explicit approval, override, or rejection on every field. |
