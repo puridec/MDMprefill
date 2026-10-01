@@ -205,6 +205,12 @@ python scripts/eval_vlm_handwritten_subset.py
 ```
 Reads `eval/eval_results_vlm_1-10-2026.json` by default — if you've just run `run_eval_vlm.py` fresh, rename its output (`eval/eval_results_vlm.json`) to match, or edit `RESULTS_FILE` in the script.
 
+**Set up API key**
+Create a `.env` file in the project root:
+```
+OPENROUTER_API_KEY=your_key_here
+```
+
 ---
 
 ## Models used
