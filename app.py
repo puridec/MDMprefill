@@ -373,10 +373,9 @@ if st.session_state.extraction_done and not st.session_state.l2_done:
 
     st.markdown("**Manual field overrides** _(optional — leave blank to keep extracted values)_")
     enriched = st.session_state.enriched_fields or {}
+
     override_fields = {k: v for k, v in enriched.items()
-                       if k not in {"extractable", "raw_text_seen", "item_weight_basis",
-                                    "is_weighted", "master_weight_min", "master_weight_max",
-                                    "inner_weight_min", "inner_weight_max"}}
+                    if k not in {"extractable", "raw_text_seen"}}
     overrides = {}
     for field, current_val in override_fields.items():
         new_val = st.text_input(
