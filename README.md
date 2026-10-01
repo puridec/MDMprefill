@@ -27,7 +27,7 @@ Given a product spec document (PDF or pasted text), MDMPrefill produces a struct
 
 ## Architecture
 
-[Diagram]
+See `PRODUCT_DOC.md` for the full box diagram with persona, input/output contract, and metrics targeted vs. reached.
 
 **Classified as Rung 2 (Prompt Chain)** on the course ladder — fixed node sequence, LLM used only for extraction, no step routes or replans based on model output.
 
@@ -79,15 +79,47 @@ Ground truth was frozen before inference. Generation script is committed. Evalua
 - **Completeness** — Fill rate normalized by document depth (2-level vs 3-level)
 - **Abstention accuracy** — Fraction of unanswerable records correctly caught
 
+See `eval/DATA_EXPLAINER.md` and `eval/EVAL_EXPLAINER.md` for full detail on how the eval set was built and how each metric is computed.
 
+### Results (hand-written subset, rows 1–19, VLM path)
+
+Canonical source: `eval/eval_results_vlm_1-10-2026.json`, via `python scripts/eval_vlm_handwritten_subset.py`.
+
+| Metric | Score |
+|---|---|
+| L1a (extraction) | 89.5% (17/19) |
+| L1b (arithmetic) | 89.5% (17/19) |
+| Avg completeness | ~99% |
+
+Both failing rows (6 and 7) fail for the same root cause — the non-atomic weight pattern (Known Limitations #1) — not two independent problems.
+
+### Results (full eval set, 40 rows, VLM path)
+
+| Metric | Score |
+|---|---|
+| Overall pass rate | 65.0% (26/40) |
+| Avg completeness | 79.2% |
+| Avg cost per record | $0.0015 |
+| Total cost (40 runs) | $0.0619 |
+| API errors | 0 |
+
+The lower overall pass rate reflects the adversarial rows (20–40): blank PDFs, prompt injection strings, and non-governed units not representative of real supplier submissions.
+
+`eval/eval_results_vlm_30-9-2026.json` is a superseded run, kept for reference only — a prompt tweak between runs changed which rows trigger sanity flags (8 → 2) and shifted cost per row slightly ($0.0017 → $0.0015). Treat the 1-10-2026 file as the source of truth for every number in this README and in the project report.
 
 ## Key design decisions
 
 **No calculator-tool agent for Enrich** — the formula is fixed and known at design time. A tool call adds cost, latency, and failure surface for zero flexibility gained.
 
+**OCR dropped entirely** — PDFs go through a vision model directly (VLM reads the page image and extracts fields in one call). OCR-then-extract was rejected because it discards the layout and visual context that is the VLM's main advantage over a text model.
+
+**Retries are internal to node functions, not extra graph edges** — LLM retry fires only on invalid JSON at temperature 0.0 with a repair prompt. Retrying on low completeness risks the model fabricating values to look complete.
+
 **`l2_node` never gates on sanity flags** — every record reaches the human regardless. Completeness, sanity, and L1a/L1b are three genuinely separate signals, never blended into a single pass/fail gate.
 
-**Cropping vs whole-page** — crop coordinates isolate the packing information region of the spec sheet, reducing token cost and improving extraction accuracy by removing irrelevant page content. Whole-page mode is available as a fallback for cases where the crop fails (blank extraction) or when a future scope expansion requires fields from outside the packing region. Per-document explicit template tagging (eval_doc_templates.json) is used to assign the correct crop coordinates rather than inferring template from document position.
+**Cropping vs whole-page** — crop coordinates isolate the packing information region of the spec sheet, reducing token cost and improving extraction accuracy by removing irrelevant page content. Whole-page mode is available as a fallback for cases where the crop fails (blank extraction) or when a future scope expansion requires fields from outside the packing region. Per-document explicit template tagging (`eval_doc_templates.json`) is used to assign the correct crop coordinates rather than inferring template from document position.
+
+**Native PDF upload was planned, not used** — the original design assumed PDFs could go through OpenRouter's native file-upload path (`tools/llm_client.py`'s `_pdf_to_content_part()`, now unused). That path only works with models that have built-in native PDF support; Gemini 2.5 Flash rejects it outright. Pages are rendered locally to an image instead, reusing the same crop coordinates originally built for the abandoned OCR pipeline.
 
 ---
 
@@ -131,10 +163,14 @@ All 40 eval PDFs are computer-generated documents. Packing field text for rows 1
 | `graph/graph.py` | `build_mdm_graph()` — wires the pipeline |
 | `scripts/run_eval.py` | Offline eval harness, text path |
 | `scripts/run_eval_vlm.py` | Offline eval harness, VLM/PDF path |
-| `scripts/eval_handwritten_subset.py` | Subset report for rows 1–19 |
+| `scripts/eval_vlm_handwritten_subset.py` | Subset report for rows 1–19 (reads `eval/eval_results_vlm_1-10-2026.json`) |
 | `eval/eval_set.xlsx` | Frozen ground truth (40 rows) |
 | `eval/eval_doc_templates.json` | Per-document template tagging |
+| `eval/eval_results_vlm_1-10-2026.json` | Canonical eval results — source for every number in this README |
 | `eval/test/` | 40 synthetic spec PDFs |
+| `eval/DATA_EXPLAINER.md` | What's in the eval data and how it was built |
+| `eval/EVAL_EXPLAINER.md` | What each script and metric does, how to read the results JSON |
+| `PRODUCT_DOC.md` | Persona, input/output, architecture box diagram, metrics targeted vs. reached |
 | `app.py` | Streamlit UI — input, extraction, L2 review, commit |
 | `run_app.bat` | One-click launcher for Windows |
 
@@ -165,8 +201,9 @@ python scripts/run_eval_vlm.py
 
 **Run hand-written subset report**
 ```bash
-python scripts/eval_handwritten_subset.py
+python scripts/eval_vlm_handwritten_subset.py
 ```
+Reads `eval/eval_results_vlm_1-10-2026.json` by default — if you've just run `run_eval_vlm.py` fresh, rename its output (`eval/eval_results_vlm.json`) to match, or edit `RESULTS_FILE` in the script.
 
 ---
 

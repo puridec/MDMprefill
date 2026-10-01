@@ -7,6 +7,16 @@ from graph.nodes import (
     commit_node, route_after_l2, route_by_input_type,
 )
 
+# graph/graph.py
+#
+# Wires the fixed-sequence pipeline into a LangGraph StateGraph.
+# LangGraph exists here for exactly one reason: interrupt_before=
+# ["l2_review"] gives the mandatory human gate a real pause/resume
+# point, backed by a checkpointer, instead of a manual "stop and wait
+# for input()" hack. It is not used for routing or replanning - every
+# node runs in the same fixed order every time, regardless of what the
+# model returns. See build_mdm_graph() below for the two entry points.
+
 
 def build_mdm_graph():
     """OCR/ingestion (EasyOCR) is NOT in this graph - superseded by
