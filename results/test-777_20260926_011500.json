@@ -1,0 +1,71 @@
+{
+  "thread_id": "test-777",
+  "timestamp": "2026-09-26T01:15:00.011661+00:00",
+  "input": {
+    "input_text": null,
+    "input_pdf_path": "eval\\test\\eval_doc_038.pdf",
+    "template_id": "GEN"
+  },
+  "extracted_fields": {
+    "item_qty": null,
+    "item_unit": null,
+    "item_weight_min": null,
+    "item_weight_max": null,
+    "item_weight_basis": null,
+    "inner_container_um": "BAG",
+    "item_per_inner_qty": null,
+    "inner_weight_min": 2.0,
+    "inner_weight_max": 2.0,
+    "inner_per_master_qty": 10,
+    "master_container_um": "CS",
+    "extractable": true,
+    "raw_text_seen": "2kg per bag, packed 10 bags per carton, carton contains premium-grade selection for retail display"
+  },
+  "enriched_fields": {
+    "item_qty": null,
+    "item_unit": null,
+    "item_weight_min": null,
+    "item_weight_max": null,
+    "item_weight_basis": null,
+    "inner_container_um": "BAG",
+    "item_per_inner_qty": null,
+    "inner_weight_min": 2.0,
+    "inner_weight_max": 2.0,
+    "inner_per_master_qty": 10,
+    "master_container_um": "CS",
+    "extractable": true,
+    "raw_text_seen": "2kg per bag, packed 10 bags per carton, carton contains premium-grade selection for retail display",
+    "master_weight_min": 20.0,
+    "master_weight_max": 20.0,
+    "is_weighted": false
+  },
+  "completeness_score": 1.0,
+  "sanity_flags": [],
+  "reviewer_id": "A",
+  "l2_approved": true,
+  "manual_overrides": {},
+  "final_fields": {
+    "item_qty": null,
+    "item_unit": null,
+    "item_weight_min": null,
+    "item_weight_max": null,
+    "item_weight_basis": null,
+    "inner_container_um": "BAG",
+    "item_per_inner_qty": null,
+    "inner_weight_min": 2.0,
+    "inner_weight_max": 2.0,
+    "inner_per_master_qty": 10,
+    "master_container_um": "CS",
+    "extractable": true,
+    "raw_text_seen": "2kg per bag, packed 10 bags per carton, carton contains premium-grade selection for retail display",
+    "master_weight_min": 20.0,
+    "master_weight_max": 20.0,
+    "is_weighted": false
+  },
+  "audit_trail": {
+    "reviewer_id": "A",
+    "timestamp": "2026-09-26T01:14:59.998192+00:00",
+    "delta": {},
+    "approved": true
+  }
+}

@@ -1,0 +1,26 @@
+# API client
+openai
+
+# LangGraph
+langgraph
+
+# PDF processing
+pymupdf
+
+# Spreadsheet (eval)
+openpyxl
+
+# YAML config
+pyyaml
+
+# Type hints
+typing-extensions
+
+# Streamlit UI
+streamlit
+
+# Image processing
+pillow
+
+# Environment variables
+python-dotenv

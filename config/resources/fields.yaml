@@ -1,0 +1,146 @@
+# config/fields.yaml
+# Field data dictionary for the UOM topic.
+
+fields:
+
+  item_qty:
+    description: "Almost always 1 - represents ONE unit of item_unit (e.g. one stick, one piece). This is NOT the count of items per container - that count goes in item_per_inner_qty instead."
+    data_type: integer
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "item_qty"
+
+  item_unit:
+    description: "Unit for individual item - a countable unit, never a container type"
+    data_type: string
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "item_unit"
+      allowed_values: [PC, EA, STK, EGG, BAG]
+
+  item_weight_min:
+    description: "Minimum weight of one item in KG"
+    data_type: decimal
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "item_weight_min"
+
+  item_weight_max:
+    description: "Maximum weight of one item in KG (same as min if no range)"
+    data_type: decimal
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "item_weight_max"
+
+  item_weight_basis:
+    description: "Whether item_weight_min/max as stated in the text is per_unit (weight of ONE item) or total_for_group (weight of item_per_inner_qty items combined) - classification only, do NOT divide the number yourself."
+    data_type: string
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "item_weight_basis"
+      allowed_values: [per_unit, total_for_group]
+
+  inner_container_um:
+    description: "Container for inner packing. BOX and CS (case) may also appear at this level for 3+ level packaging - master_container_um itself is always CS."
+    data_type: string
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "inner_container_um"
+      allowed_values: [BAG, SAC, TRA, PAC, SET, TNK, BOX, CS]
+
+  item_per_inner_qty:
+    description: "Number of items per inner container"
+    data_type: integer
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "item_per_inner_qty"
+
+  inner_weight_min:
+    description: "Minimum weight of inner container in KG"
+    data_type: decimal
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "inner_weight_min"
+
+  inner_weight_max:
+    description: "Maximum weight of inner container in KG"
+    data_type: decimal
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "inner_weight_max"
+
+  inner_per_master_qty:
+    description: "Number of inner containers per master carton"
+    data_type: integer
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "inner_per_master_qty"
+
+  master_container_um:
+    description: "Container for master/shipping packing - always CS (case). No separate BOX or CAR code exists at this level."
+    data_type: string
+    required: false
+    extraction:
+      primary_tier: 3
+      output_field: "master_container_um"
+      allowed_values: [CS]
+
+  master_weight_min:
+    description: "Minimum weight of master container in KG"
+    data_type: decimal
+    required: false
+    extraction:
+      primary_tier: derived
+      output_field: "master_weight_min"
+      derived_config:
+        formula: "inner_weight_min * inner_per_master_qty"
+        depends_on: ["inner_weight_min", "inner_per_master_qty"]
+
+  master_weight_max:
+    description: "Maximum weight of master container in KG"
+    data_type: decimal
+    required: false
+    extraction:
+      primary_tier: derived
+      output_field: "master_weight_max"
+      derived_config:
+        formula: "inner_weight_max * inner_per_master_qty"
+        depends_on: ["inner_weight_max", "inner_per_master_qty"]
+
+  has_master:
+    description: "Whether product has master-level packaging (case/carton/box - all coded as CS)"
+    data_type: boolean
+    extraction:
+      primary_tier: derived
+      output_field: "has_master"
+      derived_config:
+        depends_on: ["inner_per_master_qty"]
+
+  is_weighted:
+    description: "Whether product weight is in range"
+    data_type: boolean
+    extraction:
+      primary_tier: derived
+      output_field: "is_weighted"
+      derived_config:
+        depends_on: ["inner_weight_max", "inner_weight_min"]
+
+  base_um:
+    description: "Base inventory unit (always KG for company standard). Non-KG input should cause the record to abstain, not silently convert."
+    data_type: string
+    required: true
+    extraction:
+      primary_tier: derived
+      output_field: "base_um"
+      derived_config:
+        depends_on: []

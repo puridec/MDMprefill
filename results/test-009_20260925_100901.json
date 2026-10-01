@@ -1,0 +1,71 @@
+{
+  "thread_id": "test-009",
+  "timestamp": "2026-09-25T10:09:01.369460+00:00",
+  "input": {
+    "input_text": null,
+    "input_pdf_path": "eval\\test\\eval_doc_004.pdf",
+    "template_id": "SEA"
+  },
+  "extracted_fields": {
+    "item_qty": 1,
+    "item_unit": "PC",
+    "item_weight_min": 0.075,
+    "item_weight_max": 0.085,
+    "item_weight_basis": "per_unit",
+    "inner_container_um": "BAG",
+    "item_per_inner_qty": 10,
+    "inner_weight_min": 0.75,
+    "inner_weight_max": 0.85,
+    "inner_per_master_qty": 6,
+    "master_container_um": "CS",
+    "extractable": true,
+    "raw_text_seen": "\u0e02\u0e19\u0e32\u0e14 75-85g/pcs \u0e1a\u0e23\u0e23\u0e08\u0e38 10 \u0e0a\u0e34\u0e49\u0e19/\u0e16\u0e38\u0e07(vaccum) 6\n\u0e16\u0e38\u0e07\u0e15\u0e48\u0e2d\u0e01\u0e25\u0e48\u0e2d\u0e07 Net weight: 4.5-5.1 kg"
+  },
+  "enriched_fields": {
+    "item_qty": 1,
+    "item_unit": "PC",
+    "item_weight_min": 0.075,
+    "item_weight_max": 0.085,
+    "item_weight_basis": "per_unit",
+    "inner_container_um": "BAG",
+    "item_per_inner_qty": 10,
+    "inner_weight_min": 0.75,
+    "inner_weight_max": 0.85,
+    "inner_per_master_qty": 6,
+    "master_container_um": "CS",
+    "extractable": true,
+    "raw_text_seen": "\u0e02\u0e19\u0e32\u0e14 75-85g/pcs \u0e1a\u0e23\u0e23\u0e08\u0e38 10 \u0e0a\u0e34\u0e49\u0e19/\u0e16\u0e38\u0e07(vaccum) 6\n\u0e16\u0e38\u0e07\u0e15\u0e48\u0e2d\u0e01\u0e25\u0e48\u0e2d\u0e07 Net weight: 4.5-5.1 kg",
+    "master_weight_min": 4.5,
+    "master_weight_max": 5.1,
+    "is_weighted": true
+  },
+  "completeness_score": 1.0,
+  "sanity_flags": [],
+  "reviewer_id": "sam",
+  "l2_approved": true,
+  "manual_overrides": {},
+  "final_fields": {
+    "item_qty": 1,
+    "item_unit": "PC",
+    "item_weight_min": 0.075,
+    "item_weight_max": 0.085,
+    "item_weight_basis": "per_unit",
+    "inner_container_um": "BAG",
+    "item_per_inner_qty": 10,
+    "inner_weight_min": 0.75,
+    "inner_weight_max": 0.85,
+    "inner_per_master_qty": 6,
+    "master_container_um": "CS",
+    "extractable": true,
+    "raw_text_seen": "\u0e02\u0e19\u0e32\u0e14 75-85g/pcs \u0e1a\u0e23\u0e23\u0e08\u0e38 10 \u0e0a\u0e34\u0e49\u0e19/\u0e16\u0e38\u0e07(vaccum) 6\n\u0e16\u0e38\u0e07\u0e15\u0e48\u0e2d\u0e01\u0e25\u0e48\u0e2d\u0e07 Net weight: 4.5-5.1 kg",
+    "master_weight_min": 4.5,
+    "master_weight_max": 5.1,
+    "is_weighted": true
+  },
+  "audit_trail": {
+    "reviewer_id": "sam",
+    "timestamp": "2026-09-25T10:09:01.363968+00:00",
+    "delta": {},
+    "approved": true
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "thread_id": "test-656",
+  "timestamp": "2026-09-25T10:12:29.695176+00:00",
+  "input": {
+    "input_text": null,
+    "input_pdf_path": "eval\\test\\eval_doc_015.pdf",
+    "template_id": "GEN"
+  },
+  "extracted_fields": {
+    "item_qty": null,
+    "item_unit": null,
+    "item_weight_min": null,
+    "item_weight_max": null,
+    "item_weight_basis": null,
+    "inner_container_um": "BAG",
+    "item_per_inner_qty": null,
+    "inner_weight_min": 1.0,
+    "inner_weight_max": 1.0,
+    "inner_per_master_qty": 8,
+    "master_container_um": "CS",
+    "extractable": true,
+    "raw_text_seen": "1kg per bag x 8 bags per box"
+  },
+  "enriched_fields": {
+    "item_qty": null,
+    "item_unit": null,
+    "item_weight_min": null,
+    "item_weight_max": null,
+    "item_weight_basis": null,
+    "inner_container_um": "BAG",
+    "item_per_inner_qty": null,
+    "inner_weight_min": 1.0,
+    "inner_weight_max": 1.0,
+    "inner_per_master_qty": 8,
+    "master_container_um": "CS",
+    "extractable": true,
+    "raw_text_seen": "1kg per bag x 8 bags per box",
+    "master_weight_min": 8.0,
+    "master_weight_max": 8.0,
+    "is_weighted": false
+  },
+  "completeness_score": 1.0,
+  "sanity_flags": [],
+  "reviewer_id": "jim",
+  "l2_approved": true,
+  "manual_overrides": {},
+  "final_fields": {
+    "item_qty": null,
+    "item_unit": null,
+    "item_weight_min": null,
+    "item_weight_max": null,
+    "item_weight_basis": null,
+    "inner_container_um": "BAG",
+    "item_per_inner_qty": null,
+    "inner_weight_min": 1.0,
+    "inner_weight_max": 1.0,
+    "inner_per_master_qty": 8,
+    "master_container_um": "CS",
+    "extractable": true,
+    "raw_text_seen": "1kg per bag x 8 bags per box",
+    "master_weight_min": 8.0,
+    "master_weight_max": 8.0,
+    "is_weighted": false
+  },
+  "audit_trail": {
+    "reviewer_id": "jim",
+    "timestamp": "2026-09-25T10:12:29.686655+00:00",
+    "delta": {},
+    "approved": true
+  }
+}

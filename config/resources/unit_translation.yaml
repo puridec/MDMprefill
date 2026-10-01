@@ -1,0 +1,125 @@
+- mdm_unit_code: CS
+  mdm_um_name: Case
+  mdm_unit_text:
+    th: [กล่อง, ลัง]
+    en: [box, boxes, carton, case, cs]
+  mdm_unit_text_th: กล่อง
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: BOX
+  mdm_um_name: Box
+  mdm_unit_text:
+    th: []
+    en: [box, boxes]
+  mdm_unit_text_th: ""
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: KG
+  mdm_um_name: Kilogram
+  mdm_unit_text:
+    th: [กก, กิโลกรัม]
+    en: [kg, kgs, kilogram, kilograms]
+  mdm_unit_text_th: กก,กิโลกรัม
+  decimal_place: 0
+  unit_type: Weight
+
+- mdm_unit_code: G
+  mdm_um_name: gram
+  mdm_unit_text:
+    th: [ก, กรัม]
+    en: [g, gram, grams]
+  mdm_unit_text_th: ก,กรัม
+  decimal_place: 0
+  unit_type: Weight
+
+- mdm_unit_code: PAC
+  mdm_um_name: Pack
+  mdm_unit_text:
+    th: [แพ็ค]
+    en: [pack, packs, pac]
+  mdm_unit_text_th: แพ็ค
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: EA
+  mdm_um_name: Each
+  mdm_unit_text:
+    th: [ตัว]
+    en: [each, whole, ea]
+  mdm_unit_text_th: ตัว
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: BAG
+  mdm_um_name: Bag
+  mdm_unit_text:
+    th: [ถุง]
+    en: [bag, bags]
+  mdm_unit_text_th: ถุง
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: STK
+  mdm_um_name: Stick
+  mdm_unit_text:
+    th: [ไม้]
+    en: [stick, stk]
+  mdm_unit_text_th: ไม้
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: TRA
+  mdm_um_name: Tray
+  mdm_unit_text:
+    th: [ถาด, ถาดthermoform]
+    en: [thermoform, tra, tray]
+  mdm_unit_text_th: ถาด,ถาดthermoform
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: SET
+  mdm_um_name: Set
+  mdm_unit_text:
+    th: [ชุด]
+    en: [set, sets]
+  mdm_unit_text_th: ชุด
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: PC
+  mdm_um_name: Piece
+  mdm_unit_text:
+    th: [ชิ้น]
+    en: [piece, pieces, pc, pcs]
+  mdm_unit_text_th: ชิ้น
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: EGG
+  mdm_um_name: Egg
+  mdm_unit_text:
+    th: [ฟอง]
+    en: [egg, eggs]
+  mdm_unit_text_th: ฟอง
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: SAC
+  mdm_um_name: Sachet
+  mdm_unit_text:
+    th: [ซอง]
+    en: [sachet, sachets, sac]
+  mdm_unit_text_th: ซอง
+  decimal_place: 0
+  unit_type: Quantity
+
+- mdm_unit_code: TNK
+  mdm_um_name: tank
+  mdm_unit_text:
+    th: [ถัง]
+    en: [tank, tnk]
+  mdm_unit_text_th: ถัง
+  decimal_place: 0
+  unit_type: Quantity
