@@ -1,17 +1,10 @@
 # tools/llm_client.py
 #
-# The actual LLM calls for Stage 3 extraction - both the text path and
-# the vision path share one retry/cost-tracking core (_extract_with_retry),
-# since "did the response parse as valid JSON" doesn't care which
-# modality produced it. Plain functions, no LangGraph, no state dict -
-# testable in isolation, same pattern as tools/ocr_engine.py.
-#
-# PDFs are sent directly to OpenRouter via the "file" content type
-# (engine="native" forced explicitly) rather than rendered to an image
-# locally first - see _pdf_to_content_part(). This avoids a silent
-# fallback to an OCR-based parsing engine on OpenRouter's side, which
-# would reintroduce the exact transcribe-then-interpret problem Option B
-# was chosen to avoid.
+# PDFs are rendered locally to an image (via pymupdf) and sent that way -
+# see extract_packing_fields_from_pdf(). The native file-upload path
+# (_pdf_to_content_part()) is defined but unused; it only works with
+# models that have genuine native PDF support, which the vision model
+# in use here does not.
 
 import json
 import base64
