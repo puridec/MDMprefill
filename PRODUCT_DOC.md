@@ -76,7 +76,7 @@ Plus, on every commit: a **delta log** (which fields changed during L2 review) a
                          └─────────────────────────────────────┘
 ```
 
-**For L2 Human gate, it simulates an MDM system's native stewardship/approval workflow with streamlit — no live MDM platform available for this POC.**
+**For L2 Human gate and commit gate, it simulates an MDM system's native stewardship/approval workflow + storage with streamlit instead since no live MDM platform available for this POC.**
 
 **Orchestration tool:** LangGraph wires these stages into a `StateGraph`, used solely to give the L2 gate a real pause/resume point (`interrupt_before=["l2_review"]`) backed by a checkpointer. It does not route or replan — every node runs in the same fixed order regardless of what the model returns. This is a Rung 2 fixed-sequence prompt chain, not an autonomous agent.
 
