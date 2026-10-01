@@ -141,7 +141,7 @@ The model occasionally extracts partial data from documents it should reject ent
 All 40 eval PDFs are computer-generated documents. Packing field text for rows 1–19 is human-authored but surrounding document content is synthetic. Real production documents may present different layout variance, print quality, and handwritten annotations not covered by this eval set.
 
 **6. No production system integration**
-`commit_node` is a deliberate placeholder — it prints final JSON. Real MDM write and review workflow are explicitly out of scope for this POC.
+`commit_node` is a deliberate placeholder — it prints final JSON. Real MDM write and review workflow are explicitly out of scope for this POC. L2 review and commit are capabilities a production MDM platform would natively provide; both are simulated here in Streamlit because no live MDM system is available to integrate with.
 
 ---
 
