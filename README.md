@@ -2,6 +2,8 @@
 
 **Individual Project — PE6201 Emerging AI Technologies**
 
+**Link to the 8 Minutes Presentation:** https://youtu.be/2qAiT8Y9PK0
+
 Extracts packing and unit-of-measure (UOM) fields from R&D specification PDFs into governed MDM fields, replacing a manual data-entry process. A mandatory human sign-off gate ensures no field reaches the MDM system without reviewer approval.
 
 ---
