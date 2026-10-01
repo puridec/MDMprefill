@@ -93,4 +93,4 @@ Plus, on every commit: a **delta log** (which fields changed during L2 review) a
 
 The operational-subset target (≥75%) was set as the bar for "good enough to be worth a mandatory human review step rather than a fully manual process" — not a bar for full autonomy, since the human gate is permanent regardless of score. Both L1a and L1b clear that target with headroom. The two failing rows (6, 7) share a single root cause — the non-atomic weight pattern — documented in the README's Known Limitations.
 
-The 65% full-set number is not compared against a target because rows 20–40 were built to be adversarial (blank documents, prompt injection, non-governed units) and are not representative of expected production input — see `eval/DATA_EXPLAINER.md`.
+The 65% full-set number is not compared against a target because rows 20–40 were built to be adversarial (blank documents, prompt injection, non-governed units) and are not representative of expected production input — see `DATA_EXPLAINER.md`.
