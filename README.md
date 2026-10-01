@@ -81,7 +81,7 @@ Ground truth was frozen before inference. Generation script is committed. Evalua
 - **Completeness** — Fill rate normalized by document depth (2-level vs 3-level)
 - **Abstention accuracy** — Fraction of unanswerable records correctly caught
 
-See `eval/DATA_EXPLAINER.md` and `eval/EVAL_EXPLAINER.md` for full detail on how the eval set was built and how each metric is computed.
+See `DATA_EXPLAINER.md` and `EVAL_EXPLAINER.md` for full detail on how the eval set was built and how each metric is computed.
 
 ### Results (hand-written subset, rows 1–19, VLM path)
 
@@ -170,8 +170,8 @@ All 40 eval PDFs are computer-generated documents. Packing field text for rows 1
 | `eval/eval_doc_templates.json` | Per-document template tagging |
 | `eval/eval_results_vlm_1-10-2026.json` | Canonical eval results — source for every number in this README |
 | `eval/test/` | 40 synthetic spec PDFs |
-| `eval/DATA_EXPLAINER.md` | What's in the eval data and how it was built |
-| `eval/EVAL_EXPLAINER.md` | What each script and metric does, how to read the results JSON |
+| `DATA_EXPLAINER.md` | What's in the eval data and how it was built |
+| `EVAL_EXPLAINER.md` | What each script and metric does, how to read the results JSON |
 | `PRODUCT_DOC.md` | Persona, input/output, architecture box diagram, metrics targeted vs. reached |
 | `app.py` | Streamlit UI — input, extraction, L2 review, commit |
 | `run_app.bat` | One-click launcher for Windows |
